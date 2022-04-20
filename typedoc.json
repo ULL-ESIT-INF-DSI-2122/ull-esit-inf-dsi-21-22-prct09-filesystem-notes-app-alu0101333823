@@ -1,7 +1,10 @@
 {
   "entryPoints": [
-    "./src/revista.ts",
-    "./src/suscriptor.ts"
+    "./src/AddMapReduce.ts",
+    "./src/SubMapReduce.ts",
+    "./src/ProdMapReduce.ts",
+    "./src/DivMapReduce.ts",
+    "./src/MapReduceAlgorithm.ts"
   ],
   "out": "./docs"
 }
