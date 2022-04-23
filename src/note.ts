@@ -1,4 +1,3 @@
-
 /**
  * Note class. Represents the notes that the users will store
  */
@@ -7,10 +6,10 @@ export class Note {
    * Constructor
    * @param title of the note 
    * @param body of the note 
-   * @param color of the note
+   * @param colour of the note
    */
   constructor(private title: string, private body: string, 
-    private color: string) {}
+    private colour: string) {}
 
   /**
    * @returns the title
@@ -20,10 +19,10 @@ export class Note {
   }
 
   /**
-   * @returns the color
+   * @returns the colour
    */
-  public getColor() {
-    return this.color;
+  public getColour() {
+    return this.colour;
   }
 
   /**
@@ -50,10 +49,10 @@ export class Note {
   }
 
   /**
-   * Set's a new color
-   * @param color new color to change
+   * Set's a new colour
+   * @param colour new colour to change
    */
-  public setColor(color: string) {
-    this.color = color;
+  public setcolour(colour: string) {
+    this.colour = colour;
   }
 }
