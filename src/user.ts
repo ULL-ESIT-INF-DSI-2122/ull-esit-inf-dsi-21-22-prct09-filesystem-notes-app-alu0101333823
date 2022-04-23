@@ -34,13 +34,6 @@ export class User {
   }
 
   /**
-   * @returns the notes of the user
-   */
-  public getNotes() {
-    return this.notes;
-  }
-
-  /**
    * Modifies a Note
    * @param title of the note 
    * @param body of the note
@@ -151,7 +144,6 @@ export class User {
       console.log(chalk.red('El fichero no existe'));
     } else {
       this.notes.forEach((note) => {
-        console.log(note);
         if (note.getTitle() === title) {
           switch (note.getColour()) {
             case "magenta":
