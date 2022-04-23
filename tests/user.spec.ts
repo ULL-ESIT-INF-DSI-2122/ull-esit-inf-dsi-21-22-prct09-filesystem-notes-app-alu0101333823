@@ -1,7 +1,6 @@
 import {expect} from 'chai';
 import 'mocha';
 import {User} from '../src/user';
-import * as fs from "fs";
 
 const user = new User("Pruebas");
 
@@ -44,8 +43,5 @@ describe('Pruebas de la clase User', () => {
     expect(user.removeNote("Cuerpo3")).to.be.eql(undefined);
     expect(user.removeNote("Cuerpo4")).to.be.eql(undefined);
     expect(user.removeNote("Cuerpo5")).to.be.eql(undefined);
-  });
-
-  fs.rm(`src/usersFolder/Prueba`, () => {
   });
 });
