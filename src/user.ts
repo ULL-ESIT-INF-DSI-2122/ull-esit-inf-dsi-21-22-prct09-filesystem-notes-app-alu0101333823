@@ -17,9 +17,7 @@ export class User {
     if (fs.existsSync(`src/usersFolder/${this.userName}`)) {
       const userFiles = fs.readdirSync(`src/usersFolder/${this.userName}/`);      
       userFiles.forEach((file) => {
-        // const contenidoNota = fs.readFileSync(`src/usersFolder/${this.userName}/${file}`);
         const jsonObject = JSON.parse(fs.readFileSync(`src/usersFolder/${this.userName}/${file}`).toString());
-        // console.log(notaJson);
         const newNote = new Note(jsonObject.title, jsonObject.body, jsonObject.colour);
         this.notes.push(newNote);
       });      
@@ -48,7 +46,30 @@ export class User {
    * @param body of the note
    * @param colour of the note
    */
-  public modifyNote(title: string, body: string, colour: string) {
+  public modifyNote(title: string, newTitle: string, body: string, colour: string) {
+    if (fs.existsSync(`src/usersFolder/${this.userName}/${title}.json`)) {
+      let index = 0;
+      this.notes.forEach((note, i) => {
+        if (note.getTitle() === title) {
+          index = i;
+        }
+      });
+      const note = this.notes[index];
+
+      if (newTitle !== "") {
+        note.setTitle(newTitle);
+      }
+      if (body !== "") {
+        note.setBody(body);
+      }
+      if (colour !== "") {
+        note.setColour(colour);
+      }
+      this.removeNote(title);
+      this.addNote(note.getTitle(), note.getBody(), note.getColour());
+    } else {
+      console.log(chalk.red("Fichero no encontrado"));
+    }
   }
 
   /**
@@ -78,7 +99,18 @@ export class User {
    * @param title of the note to be removed
    */
   public removeNote(title: string) {
-
+    if (!fs.existsSync(`src/usersFolder/${this.userName}/${title}.json`)) {
+      console.log(chalk.red('El fichero no existe'));
+    } else {
+      this.notes.forEach((note, i) => {
+        if (note.getTitle() === title ) {
+          this.notes.splice(i, 1); 
+        }
+      });
+      fs.rm(`src/usersFolder/${this.userName}/${title}.json`, () => {
+        console.log(chalk.green(`El fichero ${title} ha sido eliminado satisfactoriamente!`));
+      });
+    }
   }
 
   /**
@@ -93,9 +125,6 @@ export class User {
           break;        
         case "blue":
           console.log(chalk.blue(`${index + 1}) ${note.getTitle()}`));
-          break;
-        case "green":
-          console.log(chalk.green(`${index + 1}) ${note.getTitle()}`));
           break;
         case "white":
           console.log(chalk.white(`${index + 1}) ${note.getTitle()}`));
@@ -118,6 +147,39 @@ export class User {
    * @param title of the note to read
    */
   public readNote(title: string) {
-    
+    if (!fs.existsSync(`src/usersFolder/${this.userName}/${title}.json`)) {
+      console.log(chalk.red('El fichero no existe'));
+    } else {
+      this.notes.forEach((note) => {
+        console.log(note);
+        if (note.getTitle() === title) {
+          switch (note.getColour()) {
+            case "magenta":
+              console.log(chalk.magenta(`${note.getTitle()}: `));
+              console.log(chalk.magenta(`\t${note.getBody()}`));
+              break;        
+            case "blue":
+              console.log(chalk.blue(`${note.getTitle()}: `));
+              console.log(chalk.blue(`\t${note.getBody()}`));
+              break;
+            case "white":
+              console.log(chalk.white(`${note.getTitle()}: `));
+              console.log(chalk.white(`\t${note.getBody()}`));
+              break;
+            case "cyan":
+              console.log(chalk.cyan(`${note.getTitle()}: `));
+              console.log(chalk.cyan(`\t${note.getBody()}`));
+              break;
+            case "yellow": 
+              console.log(chalk.yellow(`${note.getTitle()}: `));
+              console.log(chalk.yellow(`\t${note.getBody()}`));
+              break;
+            default:
+              console.log(chalk.red(`Ningún color válido en la nota ${note.getTitle()}, bórrela`));
+              break;
+          }
+        }
+      });
+    }
   }
 }

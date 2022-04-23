@@ -52,7 +52,7 @@ export class Note {
    * Set's a new colour
    * @param colour new colour to change
    */
-  public setcolour(colour: string) {
+  public setColour(colour: string) {
     this.colour = colour;
   }
 }

@@ -1,5 +1,4 @@
 import { User } from './user';
-import * as chalk from 'chalk';
 import * as yargs from 'yargs';
 
 /**
@@ -35,9 +34,7 @@ yargs.command( {
       typeof argv.body === 'string' && typeof argv.color === 'string') {
       const user = new User(argv.user);
       user.addNote(argv.title, argv.body, argv.color);
-    } else {
-      console.log(chalk.red('Se ha producido algún error'));
-    }
+    } 
   },
 });
 
@@ -46,7 +43,7 @@ yargs.command( {
  */
 yargs.command( {
   command: 'mod',
-  describe: 'Modifies a note',
+  describe: 'Modifies a note, let param "" for not change it',
   builder: {
     user: {
       describe: 'User',
@@ -55,6 +52,11 @@ yargs.command( {
     },
     title: {
       describe: 'Note title',
+      demandOption: true,
+      type: 'string',
+    },
+    newTitle: {
+      describe: 'New note title',
       demandOption: true,
       type: 'string',
     },
@@ -71,13 +73,11 @@ yargs.command( {
   },
   handler(argv) {
     if (typeof argv.user === 'string' && typeof argv.title === 'string' && 
-      typeof argv.body === 'string' && typeof argv.color === 'string') {
+        typeof argv.newTitle === 'string' && typeof argv.body === 'string' && 
+        typeof argv.color === 'string') {
       const user = new User(argv.user);
-      user.modifyNote(argv.title, argv.body, argv.color);
-      console.log(chalk.green('Se ha modificado una nota!'));
-    } else {
-      console.log(chalk.red('Se ha producido algún error'));
-    }
+      user.modifyNote(argv.title, argv.newTitle, argv.body, argv.color);      
+    } 
   },
 });
 
@@ -103,7 +103,6 @@ yargs.command( {
     if (typeof argv.user === 'string' && typeof argv.title === 'string') {
       const user = new User(argv.user);
       user.removeNote(argv.title);
-      console.log(chalk.green('Se ha borrado la nota!'));
     }
   },
 });
