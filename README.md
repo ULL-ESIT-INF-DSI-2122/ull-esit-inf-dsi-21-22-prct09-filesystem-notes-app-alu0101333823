@@ -1,6 +1,5 @@
 # Práctica 9: Manejo de ficheros con Node JS 
 ## Juan Marrero Domínguez alu0101333823
-**[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ULL-ESIT-INF-DSI-2122_ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101333823&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ULL-ESIT-INF-DSI-2122_ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101333823)**
 [![TestCoverage](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101333823/actions/workflows/coveralls.yml/badge.svg)](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101333823/actions/workflows/coveralls.yml)
 [![Tests TDD](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101333823/actions/workflows/node.js.yml/badge.svg)](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101333823/actions/workflows/node.js.yml)
 
@@ -278,21 +277,41 @@ El fichero app.ts contiene la recogida de comandos otorgados por el usuario con 
   
     - Crear el fichero
 
+    ![](/assets/add1.png)
+    
+    ![](/assets/add2.png)
+
     - No se puede fichero existente
 
-    - Ficheros en distintos directorios según usuario
+    ![](/assets/add3.png)
 
-    - Un usuario solo puede acceder a sus propios ficheros
+    - Ficheros en distintos directorios según usuario
+    
+    ![](/assets/add4.png)
 
   - Lectura de ficheros
 
+    ![](/assets/read1.png)
 
+    ![](/assets/read2.png)
+
+    - Un usuario solo puede acceder a sus propios ficheros
+
+    ![](/assets/read1.png)
 
   - Listado de ficheros
 
+    ![](/assets/list1.png)
 
   - Modificación de ficheros
 
+    ![](/assets/mod1.png)
 
+    ![](/assets/mod2.png)
 
   - Eliminación del fichero
+
+    ![](/assets/del1.png)
+
+    ![](/assets/del2.png)
+        
